@@ -25,7 +25,7 @@ SECRET_KEY = 'qprg!*8!emy+jvaq13&^x&#4dkeekq#fp$ohan@!us0b6@_!j@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'evamap.priloo.univ-nantes.fr']
 
 
 # Application definition
@@ -54,7 +54,7 @@ ROOT_URLCONF = 'webapp.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, "evamap_web/templates")],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -73,12 +73,7 @@ WSGI_APPLICATION = 'webapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
+DATABASES = {}
 
 
 # Password validation
@@ -117,4 +112,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+STATIC_ROOT = 'evamap_web/static/'
 STATIC_URL = '/static/'
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
