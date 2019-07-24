@@ -7,16 +7,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="EvaMap can evaluate the quality of an RDF mapping">
     <meta name="author" content="Benjamin MOREAU">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
     <title>EvaMap</title>
+    <style>
+      textarea {
+      width: 100%;
+      height: 150px;
+      padding: 12px 20px;
+      box-sizing: border-box;
+      border: 2px solid #ccc;
+      border-radius: 4px;
+      background-color: #f8f8f8;
+      font-size: 16px;
+      resize: none;
+}
+    </style>
   </head>
 
   <body>
   <!-- Main Content -->
-  <h1>EvaMap</h1>
-  <p>EvaMap need an excerpt of your dataset (JSON), a YARRRML mapping and the ontology (RDF) used in the mapping.</p>
-  <form action="../result">
-    <input type="submit" value="Evaluate" />
-  </form>
-  </body>
+
+  <div class="container">
+    <h1>EvaMap</h1>
+    <p>EvaMap needs a dataset (JSON), a YARRRML mapping and the ontology (RDF) used in the mapping.</p>
+      <div class="form-group">
+        <label for="dataset">Dataset (JSON) :</label>
+        <textarea id="dataset" name="dataset" placeholder="Insert the JSON dataset here..."></textarea>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+      </div>
+      <div class="form-group">
+        <label for="mapping">Mapping (YARRRML) :</label>
+        <textarea id="mapping" name="mapping" placeholder="Insert the YARRRML mapping here..."></textarea>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+      </div>
+      <div class="form-group">
+        <label for="onto">Ontologies (RDF) :</label>
+        <textarea id="onto" name="onto" placeholder="Insert the RDF ontologies here..."></textarea>
+        <div class="valid-feedback">Valid.</div>
+        <div class="invalid-feedback">Please fill out this field.</div>
+      </div>
+      <form action="../result">
+        <input type="submit" value="Evaluate" />
+      </form>
+  </div>
 
 </html>
