@@ -8,6 +8,7 @@
     <meta name="description" content="EvaMap can evaluate the quality of an RDF mapping">
     <meta name="author" content="Benjamin MOREAU">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="themes/prism.css" rel="stylesheet" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
@@ -29,10 +30,10 @@
 
   <body>
   <!-- Main Content -->
-
   <div class="container">
     <h1>EvaMap</h1>
     <p>EvaMap needs a dataset (JSON), a YARRRML mapping and the ontology (RDF) used in the mapping.</p>
+    <form action="../result", method="post">
       <div class="form-group">
         <label for="dataset">Dataset (JSON) :</label>
         <textarea id="dataset" name="dataset" placeholder="Insert the JSON dataset here..."></textarea>
@@ -51,9 +52,10 @@
         <div class="valid-feedback">Valid.</div>
         <div class="invalid-feedback">Please fill out this field.</div>
       </div>
-      <form action="../result">
         <input type="submit" value="Evaluate" />
       </form>
   </div>
+  <script src="prism.js"></script>
+  </body>
 
 </html>

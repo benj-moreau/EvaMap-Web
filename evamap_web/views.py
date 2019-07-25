@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from django.views.decorators.http import require_http_methods
+from EvaMap.EvaMap import EvaMap
 
 
 @require_http_methods(['GET'])
@@ -14,4 +15,11 @@ def form(request):
 
 @require_http_methods(['GET', 'POST'])
 def result(request):
+    onto = request.POST.get('onto')
+    mapping = request.POST.get('mapping')
+    dataset = request.POST.get('dataset')
+
+    test = EvaMap(onto, mapping, dataset)
+    test.get_complet_result()
+    print(test.final_score)
     return render(request, 'result.html')
