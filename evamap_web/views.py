@@ -20,6 +20,9 @@ def result(request):
     dataset = request.POST.get('dataset')
 
     test = EvaMap(onto, mapping, dataset)
-    test.get_complet_result()
-    print(test.final_score)
-    return render(request, 'result.html')
+    try:
+        test.evaluate_mapping()
+    except:
+        pass
+    print(test.score_tot)
+    return render(request, 'result.html', {'final_list' : test.final_list})

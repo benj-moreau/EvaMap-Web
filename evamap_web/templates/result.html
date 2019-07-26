@@ -14,11 +14,10 @@
   <!-- Main Content -->
   <h1>EvaMap Result</h1>
   <p>Result of the evaluation:.</p>
-  <?php
-    $requete = $_POST['onto'];
-    echo $requete;
-   ?>
+  <script>
+    var jsonObject = JSON.parse('{{ final_list | escapejs }}');
+    document.write(jsonObject)
+  </script>
   <a href="../form">Restart</a>
   </body>
-
 </html>
