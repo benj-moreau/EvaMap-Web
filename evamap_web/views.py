@@ -14,4 +14,5 @@ def form(request):
 
 @require_http_methods(['GET', 'POST'])
 def result(request):
+    print(request.POST)
     return render(request, 'result.html')
