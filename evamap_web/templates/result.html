@@ -30,12 +30,33 @@
 
   <section class="page-section portfolio" id="portfolio">
     <div class="container" id="result">
+      <!-- About Section Heading -->
+      <h2 class="page-section-heading text-center text-uppercase">RESULT</h2>
+      <!-- Icon Divider -->
+      <div class="divider-custom divider-dark">
+        <div class="divider-custom-line"></div>
+        <div class="divider-custom-icon">
+          <i class="fas fa-star"></i>
+        </div>
+        <div class="divider-custom-line"></div>
+      </div>
       {% verbatim %}
       <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Heading -->
-        <h1>EvaMap Result</h1>
-        <p>Result of the evaluation:.</p>
-        <a href="../form">Restart</a>
+        <h4>Total Score:</h4>
+        <h3 v-bind:style="{ color: get_color(total_score) }">{{ total_score.toFixed(3)*100 }}%</h3>
+        <div class="card" v-for="dimension_result in detailed_results" style="margin-top: 10px" v-bind:style="{ border: '0.125rem solid' + get_color(dimension_result.score) }">
+          <div class="card-body">
+            <h5 v-bind:style="{ color: get_color(dimension_result.score) }" class="card-title">{{dimension_result.name}} <i v-bind:class="get_icon(dimension_result.name)"></i></h5>
+            <h6 v-bind:style="{ color: get_color(dimension_result.score) }" class="card-subtitle mb-2">{{dimension_result.score.toFixed(3)*100}}%</h6>
+            <ul class="list-group list-group-flush">
+            <div v-for="metric in dimension_result.metrics">
+              <li class="list-group-item" v-for="feedback in metric.feedbacks" style="color: #565656">{{ feedback }}</li>
+            </div>
+            </ul>
+          </div>
+        </div>
+        <a style="margin-top: 10px" href="/form" type="button" class="btn btn-lg btn-outline-primary">Restart <i class="fas fa-undo-alt"></i></a>
       </div>
       {% endverbatim %}
     </div>
@@ -59,7 +80,7 @@
   </section>
   <script>
     let total_score = {{ total_score }};
-    let detailed_result = {{ detailed_result }};
+    let detailed_result = JSON.parse('{{ detailed_result|safe }}');
   </script>
   <script src='{% static "js/result.js" %}'></script>
   </body>
