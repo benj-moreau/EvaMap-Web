@@ -1653,15 +1653,6 @@ var examples = [
     }
 ];
 
-const router = new VueRouter({
-    routes: [
-        {
-            path: '/result',
-            name: 'result',
-        }
-    ]
-});
-
 var form = new Vue({
     el: '#form',
     data: {
@@ -1669,20 +1660,13 @@ var form = new Vue({
         selected_example: {},
         dataset: '',
         ontology: '',
-        mapping: '',
+        mapping: ''
     },
-
     watch: {
         selected_example: function () {
             this.dataset = this.selected_example.dataset;
             this.ontology = this.selected_example.ontology;
             this.mapping = this.selected_example.mapping;
-        }
-    },
-    methods: {
-        submit_form: function () {
-            param = {name: 'result'/*, params: {dataset: this.dataset, mapping: this.mapping, ontology: this.ontology}}*/}
-            router.push('../result')
         }
     }
 });

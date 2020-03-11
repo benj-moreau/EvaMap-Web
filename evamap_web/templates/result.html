@@ -29,13 +29,15 @@
   </nav>
 
   <section class="page-section portfolio" id="portfolio">
-    <div class="container">
+    <div class="container" id="result">
+      {% verbatim %}
       <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Heading -->
         <h1>EvaMap Result</h1>
         <p>Result of the evaluation:.</p>
         <a href="../form">Restart</a>
       </div>
+      {% endverbatim %}
     </div>
   </section>
 
@@ -55,6 +57,10 @@
       </div>
     </div>
   </section>
-  </body>
+  <script>
+    let total_score = {{ total_score }};
+    let detailed_result = {{ detailed_result }};
+  </script>
+  <script src='{% static "js/result.js" %}'></script>
   </body>
 </html>
