@@ -1653,17 +1653,36 @@ var examples = [
     }
 ];
 
+const router = new VueRouter({
+    routes: [
+        {
+            path: '/result',
+            name: 'result',
+        }
+    ]
+});
+
 var form = new Vue({
     el: '#form',
     data: {
         examples: examples,
-        selected_example: {}
+        selected_example: {},
+        dataset: '',
+        ontology: '',
+        mapping: '',
     },
+
     watch: {
         selected_example: function () {
-            document.getElementById("dataset").value = this.selected_example.dataset;
-            document.getElementById("ontology").value = this.selected_example.ontology;
-            document.getElementById("mapping").value = this.selected_example.mapping;
+            this.dataset = this.selected_example.dataset;
+            this.ontology = this.selected_example.ontology;
+            this.mapping = this.selected_example.mapping;
+        }
+    },
+    methods: {
+        submit_form: function () {
+            param = {name: 'result'/*, params: {dataset: this.dataset, mapping: this.mapping, ontology: this.ontology}}*/}
+            router.push('../result')
         }
     }
 });
