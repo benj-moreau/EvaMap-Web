@@ -25,7 +25,7 @@ SECRET_KEY = 'qprg!*8!emy+jvaq13&^x&#4dkeekq#fp$ohan@!us0b6@_!j@'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'evamap.priloo.univ-nantes.fr']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'evamap.priloo.univ-nantes.fr', 'evamap.herokuapp.com']
 
 
 # Application definition
