@@ -45,7 +45,7 @@
         <!-- Masthead Heading -->
         <h4>Total Score:</h4>
         <h3 v-bind:style="{ color: get_color(total_score) }">{{ total_score.toFixed(3)*100 }}%</h3>
-        <div class="card" v-for="dimension_result in detailed_results" style="margin-top: 10px" v-bind:style="{ border: '0.125rem solid' + get_color(dimension_result.score) }">
+        <div class="card" v-for="dimension_result in detailed_results" style="margin-top: 10px; width: 100%;" v-bind:style="{ border: '0.125rem solid' + get_color(dimension_result.score) }">
           <div class="card-body">
             <h5 v-bind:style="{ color: get_color(dimension_result.score) }" class="card-title">{{dimension_result.name}} <i v-bind:class="get_icon(dimension_result.name)"></i></h5>
             <h6 v-bind:style="{ color: get_color(dimension_result.score) }" class="card-subtitle mb-2">{{dimension_result.score.toFixed(3)*100}}%</h6>
