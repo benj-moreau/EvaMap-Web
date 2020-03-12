@@ -13,10 +13,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='{% static "css/freelancer.css" %}' rel="stylesheet" type="text/css">
-    <link rel="stylesheet/less" type="text/css" href='{% static "less/chart.less" %}' />
-    <script src="//cdnjs.cloudflare.com/ajax/libs/less.js/3.9.0/less.min.js" ></script>
     <!-- VueJs -->
     <script src="https://unpkg.com/vue@2.5.13/dist/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.5"></script>
@@ -32,6 +31,7 @@
 
   <section class="page-section portfolio" id="portfolio">
     <div class="container" id="result">
+      {% verbatim %}
       <!-- About Section Heading -->
       <h2 class="page-section-heading text-center text-uppercase">RESULT</h2>
       <!-- Icon Divider -->
@@ -42,20 +42,17 @@
         </div>
         <div class="divider-custom-line"></div>
       </div>
-      {% verbatim %}
+      <div class="container d-flex align-items-center flex-column">
+        <h4>Total Score:</h4>
+        <h3 v-bind:style="{ color: get_color(total_score) }">{{ total_score.toFixed(3)*100 }}%</h3>
+      </div>
       <div class="container align-items-center">
-        <div class="col-md-4 offset-md-2">
-          <div class="chart-wrap vertical align-items-center">
-            <div class="grid">
-              <div v-for="dimension_result in detailed_results" class="bar" v-bind:style="{'--bar-value': (dimension_result.score * 100) + '%' }" v-bind:data-name="dimension_result.name" v-bind:title="dimension_result.name + (dimension_result.score*100) + '%'"></div>
-            </div>
-          </div>
+        <div class="col-md-8 offset-md-2">
+          <div class="wrapper"><canvas id="ctx"></canvas></div>
         </div>
       </div>
       <div class="container d-flex align-items-center flex-column">
         <!-- Masthead Heading -->
-        <h4>Total Score:</h4>
-        <h3 v-bind:style="{ color: get_color(total_score) }">{{ total_score.toFixed(3)*100 }}%</h3>
         <div class="card" v-for="dimension_result in detailed_results" style="margin-top: 10px; width: 100%;" v-bind:style="{ border: '0.125rem solid' + get_color(dimension_result.score) }">
           <div class="card-body">
             <h5 v-bind:style="{ color: get_color(dimension_result.score) }" class="card-title">{{dimension_result.name}} <i v-bind:class="get_icon(dimension_result.name)"></i></h5>
