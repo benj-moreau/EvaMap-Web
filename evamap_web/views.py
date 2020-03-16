@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from EvaMap.EvaMap import EvaMap
 import json
 
+
 @require_http_methods(['GET'])
 def home(request):
     return render(request, 'home.html')
