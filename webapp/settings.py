@@ -25,7 +25,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'evamap-priloo.univ-nantes.fr', 'evamap.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'evamap-priloo.univ-nantes.fr', '172.26.70.138', 'evamap.herokuapp.com']
 
 
 # Application definition
