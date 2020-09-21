@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'evamap.priloo.univ-nantes.fr', 'evamap.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'evamap-priloo.univ-nantes.fr', 'evamap.herokuapp.com']
 
 
 # Application definition
@@ -124,6 +124,6 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
 
 try:
-    from local_settings import *
+    from .local_settings import *
 except ImportError:
     pass
